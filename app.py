@@ -9,14 +9,15 @@ from sklearn.impute import SimpleImputer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, f1_score
 
+# Set Streamlit page configuration at the top
+st.set_page_config(page_title="Financial Risk Assessment", layout="wide")
+
 # Load the data
 @st.cache_data
 def load_data():
     return pd.read_csv('financial_risk_assessment.csv')
 
 df = load_data()
-
-# ... (rest of the code remains the same)
 
 # Define features and target
 X = df.drop('Risk Rating', axis=1)
@@ -59,8 +60,6 @@ def train_model():
 model, X_test, y_test = train_model()
 
 # Streamlit app
-st.set_page_config(page_title="Financial Risk Assessment", layout="wide")
-
 # Define pages
 def home():
     st.title('Financial Risk Assessment')
@@ -87,8 +86,7 @@ def home():
     - City, State, Country: Location information
     """)
     
-    st.header("Upload an Image")
-    st.image("https://placeholder.com/600x400", caption="Placeholder for uploaded image")
+    st.image("https://static.javatpoint.com/commerce/images/financial-risk-management1.jpg", caption="Placeholder for uploaded image")
     
     if st.button("Proceed to Risk Assessment"):
         st.session_state.page = "assessment"
